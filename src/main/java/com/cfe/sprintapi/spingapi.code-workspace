@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../../crm"
+		},
+		{
+			"name": "sprintapi",
+			"path": "../../../../../.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}

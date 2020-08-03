@@ -5,11 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 public class CPULoadController {
-
-	@RequestMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
-    }
     
     @RequestMapping("/load/cpu")
     public String performcheck(int load) {

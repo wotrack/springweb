@@ -8,8 +8,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+
+import java.net.URI;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Protocol;
+
 @SpringBootApplication
 public class Application {
+	public static JedisPool pool;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -29,5 +37,19 @@ public class Application {
 
 		};
 	}
+
+	public static void onStart() {
+        try {
+    	    URI redisUri = new URI(System.getenv("localhost"));
+            pool = new JedisPool(new JedisPoolConfig(),
+                "localhost",6379, 
+                Protocol.DEFAULT_TIMEOUT);
+
+            System.out.println("Connection pool successfully initialized.");				
+    	} catch (Exception e) {
+    		System.out.println("Connection pool could  not be initialized."+ e);
+    	    Application.pool = null;
+    	}
+    }
 
 }

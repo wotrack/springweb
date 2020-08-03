@@ -12,13 +12,13 @@ public class HelloController {
     }
     
     @RequestMapping("/load/cpu")
-    public String performcheck() {
-        int load =2;
-        long amount = 1;
-        for(int i=0; i < load; i++) {
-            for (int j=0; i< load; j++) {
-                for (int k=0; k < load; k++) {
-                    for (int l=0; l<load; l++) {
+    public String performcheck(int load) {
+        //int load =2;
+        double amount = 1;
+        for(int i=1; i < load; i++) {
+            for (int j=1; j< load; j++) {
+                for (int k=1; k < load; k++) {
+                    for (int l=1; l<load; l++) {
                         amount = amount *l;
                     }
                     amount = amount *k;
@@ -27,12 +27,12 @@ public class HelloController {
             }
             amount = amount *i;
         }
-        return  "final value: "+amount;
+        return  "final value: "+amount+" .... done! ..";
     }
 
     @RequestMapping("/load/check")
     public String initcheck(int amount) {
-        return  "I am listing ..check: "+amount;
+        return  "I am listing ..check: "+amount+" .... done! ..";
     }
 
     @RequestMapping("/load/simple")
@@ -44,6 +44,6 @@ public class HelloController {
             }
             amount = amount *i;
         }
-        return  "final value: "+amount;
+        return  "final value: "+amount+" .... done! ..";
     }
 }

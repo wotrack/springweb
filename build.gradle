@@ -45,3 +45,8 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+jar {
+    baseName = 'cfe-redis'
+    version =  '0.1.0'
+}

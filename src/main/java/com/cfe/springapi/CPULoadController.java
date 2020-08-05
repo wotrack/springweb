@@ -2,6 +2,8 @@ package com.cfe.springapi;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class CPULoadController {
@@ -31,7 +33,7 @@ public class CPULoadController {
     }
 
     @RequestMapping("/load/simple")
-    public String simpleload(int load) {
+    public String simpleload(@RequestParam("load") int load) {
         int amount = 1;
         for(int i=1; i < load; i++) {
             for (int j=1; j< load; j++) {
@@ -41,4 +43,5 @@ public class CPULoadController {
         }
         return  "final value: "+amount+" .... done! ..";
     }
+
 }

@@ -2,6 +2,13 @@ package com.cfe.springapi;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.net.URI;
 import redis.clients.jedis.Jedis;
@@ -11,16 +18,29 @@ import redis.clients.jedis.Protocol;
 
 @RestController
 public class RedisAppController {
+
+    @Value( "${redis.url}" )
+    private String redisUrl;
+    @Value( "${redis.port}" )
+    private int redisPort;
+
     public JedisPool pool;       
+    
     @RequestMapping("/redis/test")
 	public String index() {
 		return "Redis COntroller listening!";
     }
 
+
+    @RequestMapping("/redis/urlinfo")
+    public String urlinfo() {
+        return "Redis URL is : "+redisUrl;
+    }
+
     @RequestMapping("/redis/get")
     public String getval(String key) {
     	pool = new JedisPool(new JedisPoolConfig(),
-                    "localhost",6379, 
+                    redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
 
     	System.out.println ("executed set initiating....");
@@ -36,9 +56,9 @@ public class RedisAppController {
     }
 
     @RequestMapping("/redis/set")
-    public String setval(String key, String value) {
+    public String setval(@RequestParam("key") String key, @RequestParam("value") String value) {
     	pool = new JedisPool(new JedisPoolConfig(),
-                    "localhost",6379, 
+                    redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
 
     	System.out.println ("executed set initiating....");
@@ -59,7 +79,7 @@ public class RedisAppController {
     @RequestMapping("/redis/info")
     public String info() {
     	pool = new JedisPool(new JedisPoolConfig(),
-                    "localhost",6379, 
+                    redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
 
     	System.out.println ("executed set initiating....");
@@ -77,7 +97,7 @@ public class RedisAppController {
     @RequestMapping("/redis/flush")
     public String flush() {
     	pool = new JedisPool(new JedisPoolConfig(),
-                    "localhost",6379, 
+                    redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
 
     	System.out.println ("executed set initiating....");

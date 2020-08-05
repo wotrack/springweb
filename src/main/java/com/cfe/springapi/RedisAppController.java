@@ -28,13 +28,7 @@ public class RedisAppController {
     
     @RequestMapping("/redis/test")
 	public String index() {
-		return "Redis COntroller listening!";
-    }
-
-
-    @RequestMapping("/redis/urlinfo")
-    public String urlinfo() {
-        return "Redis URL is : "+redisUrl;
+		return "Redis COntroller listening! url : "+redisUrl+ " port: "+redisPort+ " .. ";
     }
 
     @RequestMapping("/redis/get")
@@ -42,8 +36,6 @@ public class RedisAppController {
     	pool = new JedisPool(new JedisPoolConfig(),
                     redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
-
-    	System.out.println ("executed set initiating....");
         if (pool != null) {
             String res = "";
             Jedis jedis = pool.getResource();
@@ -60,8 +52,6 @@ public class RedisAppController {
     	pool = new JedisPool(new JedisPoolConfig(),
                     redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
-
-    	System.out.println ("executed set initiating....");
         if (pool != null) {
             String res = "";
             Jedis jedis = pool.getResource();
@@ -81,8 +71,6 @@ public class RedisAppController {
     	pool = new JedisPool(new JedisPoolConfig(),
                     redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
-
-    	System.out.println ("executed set initiating....");
         if (pool != null) {
             String res = "";
             Jedis jedis = pool.getResource();
@@ -99,8 +87,6 @@ public class RedisAppController {
     	pool = new JedisPool(new JedisPoolConfig(),
                     redisUrl,redisPort, 
                     Protocol.DEFAULT_TIMEOUT);
-
-    	System.out.println ("executed set initiating....");
         if (pool != null) {
             String res = "";
             Jedis jedis = pool.getResource();

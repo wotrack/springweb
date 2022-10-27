@@ -9,11 +9,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 
-import java.net.URI;
-import redis.clients.jedis.Jedis;
+//import java.net.URI;
+//import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.Protocol;
+//import redis.clients.jedis.JedisPoolConfig;
+//import redis.clients.jedis.Protocol;
 
 @SpringBootApplication
 public class Application {
@@ -37,7 +37,7 @@ public class Application {
 
 		};
 	}
-
+	/*
 	public static void onStart() {
         try {
     	    URI redisUri = new URI(System.getenv("localhost"));
@@ -50,6 +50,6 @@ public class Application {
     		System.out.println("Connection pool could  not be initialized."+ e);
     	    Application.pool = null;
     	}
-    }
+    } */
 
 }

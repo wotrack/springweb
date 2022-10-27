@@ -16,6 +16,3 @@ curl -X POST -F 'value=Deepesh Rajpal' -F 'key=name' http://localhost:9090/redis
 
 # To Get
 curl -X POST -F 'key=name' http://localhost:9090/redis/get
-
-# TEST API
-curl -X POST -F 'amount=2' -F 'key=name' http://localhost:9090/load/check
